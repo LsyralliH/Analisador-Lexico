@@ -1,0 +1,20 @@
+ # Arquivos de IDE
+.vscode/
+.idea/
+.settings/
+.classpath
+.project
+
+# Arquivos compilados do Java
+*.class
+
+# Pastas de compilação (Maven, VS Code, manual)
+/target/
+/bin/
+
+# Pastas de compilação do comando 'javac -d .'
+/analisador/
+/principal/
+
+# Arquivo de saída do programa
+saida_analisador_lexico.pdf
