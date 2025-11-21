@@ -40,7 +40,7 @@ javac -encoding UTF-8 -cp "lib\*" -d bin src/main/java/analisador/*.java src/mai
 Agora, use o `java` para rodar o programa. O `classpath` (`-cp`) deve incluir tanto a pasta `bin` (onde estão seus `.class`) quanto a pasta `lib` (onde está o PDFBox):
 
 ```bash
-java -cp ".;lib\*" principal.Main "..\\CodigoFonte.java"
+java -cp "bin;lib\*" principal.Main "CodigoFonte.java"
 ```
 
 **O que este comando faz:**
