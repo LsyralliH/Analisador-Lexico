@@ -44,7 +44,7 @@ public class Main {
             Lexer lexer = new Lexer(sourceCode);
             List<Token> tokens = lexer.scanTokens();
 
-            SymbolTable tabela = new SymbolTable();
+            SymbolTable tabela = new SymbolTable(); //Criando e Populando tabela simbolica.
             for (Token t : tokens)
                 tabela.add(t);
 

@@ -45,10 +45,10 @@ public class Lexer {
     private int colunaInicio = 1; 
 
     public Lexer(String codigoFonte) {
-        this.codigoFonte = codigoFonte;
+        this.codigoFonte = codigoFonte; //Armazena e inicializa
     }
 
-    public List<Token> scanTokens() {
+    public List<Token> scanTokens() { //processa todo o texto.
         while (!isAtEnd()) {
             inicio = atual;
             colunaInicio = coluna;
@@ -156,7 +156,7 @@ public class Lexer {
     }
 
     //MÉTODOS AUXILIARES
-    private void identifier() {
+    private void identifier() { // distingui Palavras chaves e identificadores em situaçoes especiais (int "valorint"  ≠ int valor  )
         while (isAlphaNumeric(peek())) advance();
         String texto = codigoFonte.substring(inicio, atual);
         addToken(palavrasChave.contains(texto) ? TokenType.PALAVRA_CHAVE : TokenType.IDENTIFICADOR,
@@ -164,7 +164,7 @@ public class Lexer {
                  getTokenDescription(texto, palavrasChave.contains(texto) ? TokenType.PALAVRA_CHAVE : TokenType.IDENTIFICADOR));
     }
 
-    private void number() {
+    private void number() { //consome dígitos inteiros e consome o ponto e os dígitos subsequentes (3.14)
         while (isDigit(peek())) advance();
         if (peek() == '.' && isDigit(peekNext())) {
             advance();
@@ -174,7 +174,7 @@ public class Lexer {
         addToken(TokenType.LITERAL_NUMERICO, texto, getTokenDescription(texto, TokenType.LITERAL_NUMERICO));
     }
 
-    private void string() {
+    private void string() { //Absorção de dados caso não se encontre o fechamento de " e \n dentro de Strings
         while (peek() != '"' && !isAtEnd()) {
             if (peek() == '\n') linha++;
             advance();
@@ -184,7 +184,7 @@ public class Lexer {
         addToken(TokenType.LITERAL_STRING, texto, getTokenDescription(texto, TokenType.LITERAL_STRING));
     }
 
-    private void character() {
+    private void character() { //Absorção de dados '\n', '\'', '\t' se houver escape.
         if (peek() == '\\') advance();
         if (peek() != '\'' && !isAtEnd()) advance();
         if (peek() == '\'') advance();
