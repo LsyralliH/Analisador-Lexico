@@ -102,12 +102,13 @@ public class Lexer {
                 break;
 
             // Atribuição e comparação
-            case '=': 
-                addToken(match('=') ? TokenType.COMPARACAO : TokenType.ATRIBUICAO,
-                         match('=') ? "==" : "=",
-                         match('=') ? getTokenDescription("==", TokenType.COMPARACAO)
-                                    : getTokenDescription("=", TokenType.ATRIBUICAO));
-                break;
+            case '=':
+    boolean ehComparacao = match('='); // Testa e consome UMA vez
+    addToken(ehComparacao ? TokenType.COMPARACAO : TokenType.ATRIBUICAO,
+             ehComparacao ? "==" : "=",
+             getTokenDescription(ehComparacao ? "==" : "=", 
+                                 ehComparacao ? TokenType.COMPARACAO : TokenType.ATRIBUICAO));
+    break;
 
             case '!': 
                 addToken(match('=') ? TokenType.COMPARACAO : TokenType.OPERADOR_LOGICO,
@@ -170,6 +171,9 @@ public class Lexer {
             advance();
             while (isDigit(peek())) advance();
         }
+        if (peek() == 'f' || peek() == 'F') {
+        advance();
+    }
         String texto = codigoFonte.substring(inicio, atual);
         addToken(TokenType.LITERAL_NUMERICO, texto, getTokenDescription(texto, TokenType.LITERAL_NUMERICO));
     }
