@@ -222,27 +222,27 @@ public class Lexer {
             case IDENTIFICADOR: return "Identificador -> " + lexema;
             case OPERADOR_ARITMETICO:
                 switch (lexema) {
-                    case "+": return "Operador -> Mais ('+')";
-                    case "-": return "Operador -> Menos ('-')";
-                    case "*": return "Operador -> Multiplicação ('*')";
-                    case "/": return "Operador -> Divisão ('/')";
+                    case "+": return "Operador aritmético -> Mais ('+')";
+                    case "-": return "Operador aritmético -> Menos ('-')";
+                    case "*": return "Operador aritmético -> Multiplicação ('*')";
+                    case "/": return "Operador aritmético -> Divisão ('/')";
                 }
                 break;
             case OPERADOR_LOGICO:
                 switch (lexema) {
-                    case "&&": return "Operador -> E lógico ('&&')";
-                    case "||": return "Operador -> OU lógico ('||')";
-                    case "!": return "Operador -> Negação ('!')";
+                    case "&&": return "Operador lógico -> E lógico ('&&')";
+                    case "||": return "Operador lógico -> OU lógico ('||')";
+                    case "!": return "Operador lógico -> Negação ('!')";
                 }
                 break;
             case OPERADOR_BIT_A_BIT:
                 switch (lexema) {
-                    case "&": return "Operador -> AND bit a bit ('&')";
-                    case "|": return "Operador -> OR bit a bit ('|')";
-                    case "^": return "Operador -> XOR bit a bit ('^')";
-                    case "~": return "Operador -> NOT bit a bit ('~')";
-                    case "<<": return "Operador -> Deslocamento à esquerda ('<<')";
-                    case ">>": return "Operador -> Deslocamento à direita ('>>')";
+                    case "&": return "Operador bit a bit -> AND bit a bit ('&')";
+                    case "|": return "Operador bit a bit -> OR bit a bit ('|')";
+                    case "^": return "Operador bit a bit -> XOR bit a bit ('^')";
+                    case "~": return "Operador bit a bit -> NOT bit a bit ('~')";
+                    case "<<": return "Operador bit a bit -> Deslocamento à esquerda ('<<')";
+                    case ">>": return "Operador bit a bit -> Deslocamento à direita ('>>')";
                 }
                 break;
             case ATRIBUICAO: return "Atribuição -> '='";
